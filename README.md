@@ -34,6 +34,8 @@ Google to learn more, it's a very common topic when using Raspberry PI.
 
 ## Initial setup
 
+The setuo can be done by hand or by useing [a smal installation script](https://raw.githubusercontent.com/karaambaa/a2dp-bluetooth-server/master/a2dp).
+
 I'm using [Raspberry PI 1 Model B](https://www.raspberrypi.org/products/model-b/), running [Raspbian Jessie](https://www.raspberrypi.org/downloads/raspbian/). Make sure your system is up–to–date first:
 
 ```
