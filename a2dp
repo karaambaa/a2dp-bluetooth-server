@@ -1,0 +1,41 @@
+
+sudo apt-get update
+sudo apt-get upgrade
+
+sudo apt-get install alsa-utils bluez bluez-tools pulseaudio-module-bluetooth python-gobject python-gobject-2 cron python -y
+
+sudo usermod -a -G lp volumio
+
+
+deamonSettings = ' resample-method=ffmpeg \n enable-remixing = no \n enable-lfe-remixing = no \n default-sample-format = s32le \n default-sample-rate = 192000 \n alternate-sample-rate = 176000 \n default-sample-channels = 2 \n exit-idle-time = -1'
+sudo echo -e "$deamonSettings" > /etc/pulse/daemon.conf
+
+
+hostName = $( hostname )
+blueConfig=/etc/bluetooth/main.conf
+if grep -q 'Name = $hostName' "$blueConfig"; then
+   sudo sed -i 's/Name = .*/Name = $hostName/g' $blueConfig
+else
+   sudo echo -e " Name = $hostName \n" > $blueConfig
+fi
+if ! grep -q 'Class = 0x20041C' "$blueConfig"; then
+   sudo echo -e " Class = 0x20041C \n" > $blueConfig
+fi
+if ! grep -q 'Enable = Source,Sink,Media,Socket' "$blueConfig"; then
+   sudo echo -e " Enable = Source,Sink,Media,Socket \n" > $blueConfig
+fi
+
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+rm get-pip.py
+pip install pexpect
+
+mkdir /usr/bin/a2dp-bluetooth-server
+wget https://gist.github.com/ofekp/539ce199a96e6a9ace2c1511cc7409ce/raw/30a91d80d5d7ee93e336f2e9ee1f7e2ef601e3f1/bluetoothctl.py -P /usr/bin/a2dp-bluetooth-server
+wget https://raw.githubusercontent.com/karaambaa/a2dp-bluetooth-server/master/a2dp.py -P /usr/bin/a2dp-bluetooth-server
+
+wget https://raw.githubusercontent.com/karaambaa/a2dp-bluetooth-server/master/a2dp-server.service -P /lib/systemd/system
+sudo chmod 644 /lib/systemd/system/a2dp-server.service
+sudo systemctl daemon-reload
+sudo systemctl enable a2dp-server.service
+sudo systemctl start a2dp-server.service
