@@ -34,9 +34,9 @@ Google to learn more, it's a very common topic when using Raspberry PI.
 
 ## Initial setup
 
-The setup can be done by hand or by useing [a smal installation script](https://raw.githubusercontent.com/karaambaa/a2dp-bluetooth-server/master/a2dp).
+The setup can be done by hand or by useing [a small installation script](https://raw.githubusercontent.com/karaambaa/a2dp-bluetooth-server/master/a2dp).
 
-I'm using [Raspberry PI 2](https://www.raspberrypi.org/products/model-b/), running [Raspbian Jessie](https://www.raspberrypi.org/downloads/raspbian/). Make sure your system is up–to–date first:
+I'm using [Raspberry PI 2](https://www.raspberrypi.org/products/model-b/), running [Volumio 2](https://volumio.org). Make sure your system is up–to–date first:
 
 ```
 sudo apt-get update
