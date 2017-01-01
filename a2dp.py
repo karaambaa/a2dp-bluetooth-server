@@ -1,4 +1,5 @@
 from bluetoothctl import Bluetoothctl
+from subprocess import call
 
 print("Init bluetooth...")
 bl = Bluetoothctl()
@@ -10,12 +11,14 @@ info = True
 while True:
     if info:
         if bl.is_connected():
+            call(["pulseaudio", "--start"])
             print('connected')
         else:
             print('not yet connected')
         info = False
 
     while not bl.is_connected():
+        call(["pulseaudio", "--kill"])
         bl.child.expect('Request confirmation', timeout=None)
         bl.child.sendline('yes')
         for _ in range(3):
