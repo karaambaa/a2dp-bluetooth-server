@@ -48,7 +48,7 @@ sudo apt-get upgrade
 Then install required packages ([related article](http://www.instructables.com/id/Enhance-your-Raspberry-Pi-media-center-with-Blueto/?ALLSTEPS)):
 
 ```
-sudo apt-get install alsa-utils bluez bluez-tools pulseaudio-module-bluetooth python-gobject python-gobject-2 python
+sudo apt-get install alsa-utils bluetooth bluez bluez-tools blueman pulseaudio-module-bluetooth python-gobject python-gobject-2 python
 ```
 
 Not quite sure it's really needed (?), but it doesn't hurt:
