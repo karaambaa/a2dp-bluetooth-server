@@ -67,7 +67,7 @@ sed 's/; autospawn = yes/autospawn = no/' </etc/pulse/client.conf  >~/.config/pu
 Use the following configuration to get most of PulseAudio ([related article](http://www.crazy-audio.com/2014/09/pulseaudio-on-the-raspbery-pi/)):
 
 ```
-volumio@raspberrypi:~ $ nano /etc/pulse/daemon.conf
+volumio@raspberrypi:~ $ sudo nano /etc/pulse/daemon.conf
 ...
 resample-method=ffmpeg
 enable-remixing = no
@@ -88,7 +88,7 @@ So if you expect PI to do something else beside A2DP and avoid sound glitches, r
 Make sure Bluetooth audio is working and discovered as a car audio system (the setup-script will use the hostname as Bluetoothname)
 
 ```
-pi@raspberrypi:~ $ nano /etc/bluetooth/main.conf
+pi@raspberrypi:~ $ sudo nano /etc/bluetooth/main.conf
 [General]
 Name = volumio
 Class = 0x20041C
@@ -100,14 +100,14 @@ Enable = Source,Sink,Media,Socket
 To automate the Trusting and Connecting process pexpect is needed, so we have to install it by issuing the following commands.
 ```
 wget https://bootstrap.pypa.io/get-pip.py
-python get-pip.py
+sudo python get-pip.py
 rm get-pip.py
-pip install pexpect
+sudo pip install pexpect
 ```
 
 Download the Scripts, I put mine into a folder called `a2dp-bluetooth-server`.
 ```
-mkdir /usr/bin/a2dp-bluetooth-server
+mkdir -p /usr/bin/a2dp-bluetooth-server
 wget https://gist.github.com/ofekp/539ce199a96e6a9ace2c1511cc7409ce/raw/30a91d80d5d7ee93e336f2e9ee1f7e2ef601e3f1/bluetoothctl.py -P /usr/bin/a2dp-bluetooth-server
 wget https://raw.githubusercontent.com/karaambaa/a2dp-bluetooth-server/master/a2dp.py -P /usr/bin/a2dp-bluetooth-server
 ```
