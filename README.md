@@ -107,14 +107,14 @@ sudo pip install pexpect
 
 Download the Scripts, I put mine into a folder called `a2dp-bluetooth-server`.
 ```
-mkdir -p /usr/bin/a2dp-bluetooth-server
-wget https://gist.github.com/ofekp/539ce199a96e6a9ace2c1511cc7409ce/raw/30a91d80d5d7ee93e336f2e9ee1f7e2ef601e3f1/bluetoothctl.py -P /usr/bin/a2dp-bluetooth-server
-wget https://raw.githubusercontent.com/karaambaa/a2dp-bluetooth-server/master/a2dp.py -P /usr/bin/a2dp-bluetooth-server
+sudo mkdir -p /usr/bin/a2dp-bluetooth-server
+sudo wget https://gist.github.com/ofekp/539ce199a96e6a9ace2c1511cc7409ce/raw/30a91d80d5d7ee93e336f2e9ee1f7e2ef601e3f1/bluetoothctl.py -P /usr/bin/a2dp-bluetooth-server
+sudo wget https://raw.githubusercontent.com/karaambaa/a2dp-bluetooth-server/master/a2dp.py -P /usr/bin/a2dp-bluetooth-server
 ```
 
 To enable autostarting the service we need to put the following script into `/lib/systemd/system` and enable the autostart.
 ```
-wget https://raw.githubusercontent.com/karaambaa/a2dp-bluetooth-server/master/a2dp-server.service -P /lib/systemd/system
+sudo wget https://raw.githubusercontent.com/karaambaa/a2dp-bluetooth-server/master/a2dp-server.service -P /lib/systemd/system
 sudo chmod 644 /lib/systemd/system/a2dp-server.service
 ```
 ```
