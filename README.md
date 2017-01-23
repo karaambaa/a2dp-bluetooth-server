@@ -61,6 +61,7 @@ sudo usermod -a -G lp volumio
 ## Setup PulseAudi
 Disable PulseAudios "auto spwan":
 ```
+mkdir -p ~/.config/pulse/
 sed 's/; autospawn = yes/autospawn = no/' </etc/pulse/client.conf  >~/.config/pulse/client.conf
 ```
 Use the following configuration to get most of PulseAudio ([related article](http://www.crazy-audio.com/2014/09/pulseaudio-on-the-raspbery-pi/)):
